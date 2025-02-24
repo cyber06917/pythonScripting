@@ -19,7 +19,6 @@ def download_youtube_video(url, save_path="."):
             # Extract video information
             info_dict = ydl.extract_info(url, download=False)
             print(f"Title: {info_dict.get('title', 'N/A')}")
-            print(f"Views: {info_dict.get('view_count', 'N/A')}")
 
             print("Downloading...")
             ydl.download([url])
