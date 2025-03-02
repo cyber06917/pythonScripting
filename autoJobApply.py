@@ -9,7 +9,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-
 # Brave Browser path on OS
 brave_path = "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
 
@@ -28,9 +27,6 @@ chromedriver_path = "/usr/local/bin/chromedriver"  # Update this path if necessa
 # Initialize WebDriver with the specified Chromedriver and options
 service = Service(chromedriver_path)
 driver = webdriver.Chrome(service=service, options=chrome_options)
-
-print("Connected to Brave successfully!")
-
 
 
 # Define multiple job roles to search for
@@ -53,9 +49,8 @@ def search_linkedin_jobs(job_title):
 
 def apply_linkedin_jobs():
     print("Applying for jobs on LinkedIn...")
-    # Add your job application logic here
-
-    # Wait for button to be clickable using class name
+    
+   # Wait for button to be clickable using class name
     apply_button = WebDriverWait(driver, 10).until(
     EC.element_to_be_clickable((By.CLASS_NAME, "jobs-apply-button"))
     )
