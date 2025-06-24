@@ -1,13 +1,18 @@
-# Install ffmpeg and yt-dlp on your platform of choice.  
-# yt-dlp uses ffmpeg to download videos above 720p, as YouTube streams video and audio separately at higher qualities.  
-# ffmpeg is used here to merge the video and audio streams.  
-# This script downloads the video in the best available quality and saves it to the specified directory.  
-# It displays the download progress and the final saved location.  
+# Install ffmpeg and yt-dlp on your platform of choice.
+# yt-dlp uses ffmpeg to download videos above 720p, as YouTube streams video and audio separately at higher qualities.
+# ffmpeg is used here to merge the video and audio streams.
+# This script downloads the video in the best available quality and saves it to the specified directory.
+# It displays the download progress and the final saved location.
 
 
 import yt_dlp
 
-def download_youtube_video(url, save_path="."):
+
+
+def download_mp3():
+    
+
+def download_video(url, save_path="."):
     try:
         ydl_opts = {
             'format': 'bestvideo[ext=mp4][height<=2160]+bestaudio[ext=m4a]/bestvideo[ext=mp4][height<=1440]+bestaudio[ext=m4a]/bestvideo[ext=mp4][height<=1080]+bestaudio[ext=m4a]',  # Download the best quality video + audio
