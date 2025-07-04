@@ -9,7 +9,13 @@ import yt_dlp
 
 
 
-def download_mp3():
+def download_mp3(url, save_path="."):
+    try:
+        ydl_opts = {
+            'format': 'bestaudio[ext=m4a]/bestvideo[ext=mp4][height<=1440]+bestaudio[ext=m4a]/bestvideo[ext=mp4][height<=1080]+bestaudio[ext=m4a]',  # Download the best quality video + audio
+            'outtmpl': f'{save_path}/%(title)s.%(ext)s',  # Save with video title in the specified directory
+            'progress_hooks': [download_hook],  # Show progress updates
+        }
     
 
 def download_video(url, save_path="."):
