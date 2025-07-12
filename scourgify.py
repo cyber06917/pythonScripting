@@ -1,12 +1,18 @@
 import argparse
 import sys
-from tabulate import tabulate
+import csv
 
 try:
 
-    if len(sys.argv) < 3:
-        print("Too few command-line arguments")
+
+
+    if len(sys.argv) != 3:
+        if len(sys.argv) < 3:
+            print("Too few command-line arguments")
+        else:
+            print("Too many command-line arguments")
         sys.exit(1)
+
 
 
     parser = argparse.ArgumentParser()
@@ -24,20 +30,18 @@ try:
     with open(args.input_file, "r") as csv_file:
         lines = csv_file.readlines()
 
-    header = ['first name', 'last name', 'house']
-    
     remain_data = []
     for  line in lines[1:]:
-        data = line.strip().split(",")
+        data = line.replace('"','').strip().split(",")
+        data = [field.strip() for field in data]
         data[0], data[1] = data[1], data[0]
         remain_data.append(data)
 
-    csv_file = tabulate(remain_data, headers=header, tablefmt="csv")  
-    print(csv_file)
-
-    with open("output.csv", "w") as f:
-        f.write(csv_file)
-
+    with open(args.output_file, "w", newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(['first', 'last', 'house'])
+        writer.writerows(remain_data)
+    
 except(FileNotFoundError):
     print("File does not exsit")
 
